@@ -1,6 +1,8 @@
 import urllib.request
 import json
 from django.shortcuts import render
+from . import config
+
 
 
 def index(request):
@@ -9,7 +11,7 @@ def index(request):
         city = request.POST['city']
 
         source = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q=' +
-                                        city + '&units=metric&appid=8c116698064f732b3c84fb20261e8e44').read()
+                                        city + '&units=metric&appid=' + config.api_key).read()
         list_of_data = json.loads(source)
 
         data = {
