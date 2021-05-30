@@ -14,6 +14,7 @@ def index(request):
                                             city + '&units=metric&appid=' + config.api_key).read()
             list_of_data = json.loads(source)
             data = {
+                "city_name":str(city).upper,
                 "country_code": str(list_of_data['sys']['country']),
                 "coordinate": str(list_of_data['coord']['lon']) + ', '
                 + str(list_of_data['coord']['lat']),
